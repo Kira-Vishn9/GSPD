@@ -1,0 +1,12 @@
+.wrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bgImage{
+    width: 100%;
+
+    z-index: 0;
+    margin: 0px 0px -10px 0px;
+}
