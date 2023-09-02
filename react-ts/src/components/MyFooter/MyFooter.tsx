@@ -1,130 +1,82 @@
 import React from 'react';
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import {Box} from "@muiDep/index.ts";
+import {
+    styled,
+    Stack,
+    Typography,
+    Box,
+    TwitterIcon,
+    FacebookIcon,
+    InstagramIcon,
+} from "@muiDep/index.ts";
+
+// Определяем стили для Typography
+const MyTypography = styled(Typography)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    m: '10px',
+    border: "0",
+    borderRadius: '0',
+    boxShadow: '0 0 0 0',
+}));
 
 const MyFooter = () => {
-    return(
-        <Box sx={{display: 'flex'}}>
-            <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
-                <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
-                    <div className='me-5 d-none d-lg-block'>
-                        <span>Get connected with us on social networks:</span>
-                    </div>
-
-                    <div>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="facebook-f" />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="twitter" />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="google" />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="instagram" />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="linkedin" />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon fab icon="github" />
-                        </a>
-                    </div>
-                </section>
-
-                <section className=''>
-                    <MDBContainer className='text-center text-md-start mt-5'>
-                        <MDBRow className='mt-3'>
-                            <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>
-                                    <MDBIcon icon="gem" className="me-3" />
-                                    Company name
-                                </h6>
-                                <p>
-                                    Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit.
-                                </p>
-                            </MDBCol>
-
-                            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Angular
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        React
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Vue
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Laravel
-                                    </a>
-                                </p>
-                            </MDBCol>
-
-                            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Pricing
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Settings
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Orders
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Help
-                                    </a>
-                                </p>
-                            </MDBCol>
-
-                            <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
-                                <p>
-                                    <MDBIcon icon="home" className="me-2" />
-                                    New York, NY 10012, US
-                                </p>
-                                <p>
-                                    <MDBIcon icon="envelope" className="me-3" />
-                                    info@example.com
-                                </p>
-                                <p>
-                                    <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
-                                </p>
-                                <p>
-                                    <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
-                                </p>
-                            </MDBCol>
-                        </MDBRow>
-                    </MDBContainer>
-                </section>
-
-                <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-                    © 2021 Copyright:
-                    <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
-                        MDBootstrap.com
-                    </a>
-                </div>
-            </MDBFooter>
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                m: '0 auto',
+                width: '100%',
+                justifyContent: 'space-around',
+                marginTop: '40px',
+                paddingBottom: '40px',
+                borderTop: '1px solid black ',
+                paddingTop: '30px'
+                // boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)'
+            }}
+        >
+            <Box sx={{ textAlign: '-webkit-center' }}>
+                <Typography variant={'h2'}>4Ask</Typography>
+                <Typography paragraph={true} sx={{ maxWidth: '300px' }}>
+                    We always make our customers happy by providing as many choices as possible
+                </Typography>
+                <Box sx={{ display: 'flex', maxWidth: '100px', justifyContent: 'space-between' }}>
+                    <TwitterIcon />
+                    <FacebookIcon />
+                    <InstagramIcon />
+                </Box>
+            </Box>
+            <Box>
+                <Typography variant={'h4'}>About</Typography>
+                <Stack>
+                    <MyTypography>About Us</MyTypography>
+                    <MyTypography>Features</MyTypography>
+                    <MyTypography>News</MyTypography>
+                    <MyTypography>Menu</MyTypography>
+                </Stack>
+            </Box>
+            <Box>
+                <Typography variant={'h4'}>Company</Typography>
+                <Stack>
+                    <MyTypography>Why 4Ask</MyTypography>
+                    <MyTypography>Partner With Us</MyTypography>
+                    <MyTypography>FAQ</MyTypography>
+                    <MyTypography>Blog</MyTypography>
+                </Stack>
+            </Box>
+            <Box>
+                <Typography variant={'h4'}>Support</Typography>
+                <Stack>
+                    <Typography>Account</Typography>
+                    <MyTypography>Support Center</MyTypography>
+                    <MyTypography>Feedback</MyTypography>
+                    <MyTypography>Contact Us</MyTypography>
+                </Stack>
+            </Box>
         </Box>
-    )
-}
+    );
+};
 
 export default MyFooter;

@@ -1,14 +1,14 @@
 import {Card, Typography, CardActionArea, CardMedia, CardContent} from '@muiDep/index.ts'
 
-const CardPopular = (number: number) => {
+const CardPopular = () => {
     return (
         <>
-            <Card sx={{ maxWidth: 205, borderRadius: '25px', m: 2 }}>
+            <Card sx={{ maxWidth: 200, borderRadius: '25px', m: 2 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         height="180"
-                        image={`https://picsum.photos/800/600?random=${number}`}
+                        image={`https://picsum.photos/800/600?random=4`}
                         alt="green iguana"
                     />
                     <CardContent sx={{height: '70px', textAlignLast: 'left'}}>

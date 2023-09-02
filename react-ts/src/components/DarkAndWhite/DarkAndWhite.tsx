@@ -1,6 +1,6 @@
 import { FormGroup, styled, Switch, FormControlLabel} from "@muiDep/index.ts";
 import React from "react";
-import { ColorModeContext } from "@/App.tsx";
+import { ColorModeContext } from "@context/ColorModeContext.ts";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,

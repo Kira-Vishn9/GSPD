@@ -1,7 +1,7 @@
 import React from "react";
 import {Box, TextField} from "@muiDep/index.ts";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {ColorModeContext} from "@/App.tsx";
+import {ColorModeContext} from "@context/ColorModeContext.ts";
 
 
 const InputSearch = () => {

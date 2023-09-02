@@ -17,5 +17,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import CardActions from '@mui/material/CardActions';
+import Rating from '@mui/material/Rating';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import Avatar from '@mui/material/Avatar';
 
-export { Grid, Card, CardContent, CardMedia, CardActionArea, Typography, Link, Paper, Stack, grey, amber, deepOrange, type PaletteMode, Box, TextField, createTheme, ThemeProvider, styled, FormGroup, FormControlLabel, Switch, Button}
+
+export { Avatar, TwitterIcon, FacebookIcon, InstagramIcon, Rating, CardActions, Grid, Card, CardContent, CardMedia, CardActionArea, Typography, Link, Paper, Stack, grey, amber, deepOrange, type PaletteMode, Box, TextField, createTheme, ThemeProvider, styled, FormGroup, FormControlLabel, Switch, Button}

@@ -1,20 +1,21 @@
 import DarkAndWhite from "@components/DarkAndWhite/DarkAndWhite.tsx";
-import ButtonLog from "@components/ButtonLog/ButtonLog.tsx";
-import {Box} from "@muiDep/index.ts";
-import {Link} from "@muiDep/index.ts"
-import {Typography} from "@mui/material";
+import ButtonLog from "@components/ButtonLogIn/ButtonLog.tsx";
+import {Link, Typography, Box} from "@muiDep/index.ts"
 import img from '../../assets/bg-image.png';
-import imgLight from '../../assets/planet.jpg';
 import styles from './style.module.css';
 import InputSearch from "@components/InputSearch/InputSearch.tsx";
-import {ColorModeContext} from "@/App.tsx";
+import {ColorModeContext} from "@context/ColorModeContext.ts";
 import {useContext} from "react";
 import React from 'react'
+import ButtonSignUp from "@components/ButtonSignUp/ButtonSignUp.tsx";
+import {authContext} from "@context/AuthContext.ts";
+import AccountMenu from "@components/AccoutMenu/AccountMenu.tsx";
 
 
 
 const Header = () => {
     const { mode } = useContext(ColorModeContext);
+    const { auth } = useContext(authContext);
     const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
     console.log(mode)
     return(
@@ -31,7 +32,6 @@ const Header = () => {
                         }}
                         onClick={preventDefault}
                     >
-
                         <Link underline="hover">home</Link>
                         <Link underline="hover">games</Link>
                         <Link underline="hover">moves</Link>
@@ -40,7 +40,16 @@ const Header = () => {
                     </Box   >
                 </nav>
                 <div><DarkAndWhite /></div>
-                <div><ButtonLog /></div>
+                <Box sx={{display: 'flex'}}>
+                    {auth ? (
+                        <AccountMenu />
+                    ) : (
+                        <div>
+                            <ButtonLog />
+                            <ButtonSignUp />
+                        </div>
+                    )}
+                </Box>
             </Box>
             <div className={styles.wrap}>
                 <InputSearch />
