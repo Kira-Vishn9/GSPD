@@ -1,9 +1,11 @@
-import {Box, Card, CardActions, CardContent, CardMedia, Typography} from "@muiDep/index.ts";
+import {Box, CardActions, CardContent, CardMedia, Typography} from "@muiDep/index.ts";
 import BasicRating from "@components/BasicRating/BasicRating.tsx";
+import {Link} from 'react-router-dom'
 
 const CardBooks = () => {
     return(
         <>
+            <Link to={'/info'}>
             <Box sx={{display: "flex", height: 380}}>
                 <CardMedia
                     component="img"
@@ -51,6 +53,7 @@ const CardBooks = () => {
             {/*    </CardActions>*/}
             {/*    </Box>*/}
             {/*</Card>*/}
+            </Link>
         </>
     )
 }

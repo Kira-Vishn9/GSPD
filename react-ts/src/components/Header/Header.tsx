@@ -1,6 +1,6 @@
 import DarkAndWhite from "@components/DarkAndWhite/DarkAndWhite.tsx";
 import ButtonLog from "@components/ButtonLogIn/ButtonLog.tsx";
-import {Link, Typography, Box} from "@muiDep/index.ts"
+import {Typography, Box} from "@muiDep/index.ts"
 import img from '../../assets/bg-image.png';
 import styles from './style.module.css';
 import InputSearch from "@components/InputSearch/InputSearch.tsx";
@@ -10,6 +10,7 @@ import React from 'react'
 import ButtonSignUp from "@components/ButtonSignUp/ButtonSignUp.tsx";
 import {authContext} from "@context/AuthContext.ts";
 import AccountMenu from "@components/AccoutMenu/AccountMenu.tsx";
+import { Link as RouterLink } from 'react-router-dom';
 
 
 
@@ -21,7 +22,9 @@ const Header = () => {
     return(
         <>
             <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', m: '0px 120px', typography: 'body1'}}>
-                <Typography variant="h2">4Ask</Typography>
+                <RouterLink to={'/main'} >
+                    <Typography variant="h2">4Ask</Typography>
+                </RouterLink>
                 <nav>
                     <Box
                         sx={{
@@ -32,11 +35,11 @@ const Header = () => {
                         }}
                         onClick={preventDefault}
                     >
-                        <Link underline="hover">home</Link>
-                        <Link underline="hover">games</Link>
-                        <Link underline="hover">moves</Link>
-                        <Link underline="hover">books</Link>
-                        <Link underline="hover">about us</Link>
+                        <RouterLink to="/home">home</RouterLink>
+                        <RouterLink to="/games" >games</RouterLink>
+                        <RouterLink to="/movies" >movies</RouterLink>
+                        <RouterLink to="/books" >books</RouterLink>
+                        <RouterLink to="/about" >about us</RouterLink>
                     </Box   >
                 </nav>
                 <div><DarkAndWhite /></div>

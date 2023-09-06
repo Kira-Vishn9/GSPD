@@ -4,18 +4,16 @@ import {Grid, Typography} from "@muiDep/index.ts";
 import CardGames from "@components/CardGames/CardGames.tsx";
 import CardBooks from "@components/CardBooks/CardBooks.tsx";
 import CardMovies from "@components/CardMovies/CardMovies.tsx";
-import MyFooter from '@components/MyFooter/MyFooter.tsx'
 
 const Main = () => {
     return (
         <>
-            <Header />
             <Typography variant="h4" sx={{textAlign: 'left', m: 2}}>
                 Popular choice of users
             </Typography>
             <Grid container>
                 {[1,2,3,4,5,6].map((value: number) => {
-                  return  <CardPopular key={value} />
+                    return  <CardPopular key={value} />
                 })}
             </Grid>
             <Typography variant="h4" sx={{textAlign: 'left', m: 2}}>
@@ -42,7 +40,6 @@ const Main = () => {
                     return  <CardMovies key={value} />
                 })}
             </Grid>
-            <MyFooter />
         </>
     )
 }

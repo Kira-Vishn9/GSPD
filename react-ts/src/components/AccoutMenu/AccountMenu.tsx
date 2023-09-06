@@ -1,18 +1,9 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+ import { Menu, MenuItem, ListItemIcon,  Divider,  IconButton,  Tooltip, PersonAdd, Settings, Logout, Box, Avatar } from '@muiDep/index.ts'
 import {useContext} from "react";
 import {authContext} from "@context/AuthContext.ts";
+import {Link} from 'react-router-dom'
+import ButtonAdd from "@components/ButtonAdd/ButtonAdd.tsx";
 
 
 export default function AccountMenu() {
@@ -81,11 +72,11 @@ export default function AccountMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem component={Link} to="/profile" onClick={handleClose}>
                     <Avatar /> Profile
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Avatar /> My account
+                <MenuItem component={Link} to="/create" onClick={handleClose}>
+                    <ButtonAdd/> Add review
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={handleClose}>

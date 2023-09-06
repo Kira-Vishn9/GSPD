@@ -1,6 +1,7 @@
 import Header from "@components/Header/Header.tsx";
 import MyFooter from "@components/MyFooter/MyFooter.tsx";
 import {IComponentChild} from "@/Interface/Interface.ts";
+import {Box} from "@muiDep/index.ts";
 
 
 const Layout = ({children}: IComponentChild): JSX.Element => {
@@ -8,7 +9,9 @@ const Layout = ({children}: IComponentChild): JSX.Element => {
         <>
             <Header />
             <main>
-                {children}
+                <Box sx={{m: 2, textAlign: '-webkit-center'}}>
+                    {children}
+                </Box>
             </main>
             <MyFooter />
         </>
