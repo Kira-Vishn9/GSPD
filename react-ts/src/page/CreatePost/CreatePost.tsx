@@ -1,47 +1,46 @@
-import {Box, Typography, MuiFileInput, FormControl, OutlinedInput, InputLabel, MenuItem, Select} from "@muiDep/index.ts";
+import {
+    Box,
+    Typography,
+    FormControl,
+    Button,
+    TextField, SelectChangeEvent
+} from "@muiDep/index.ts";
 import React from 'react'
-
-const typeReviews = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-];
+import ButtonSelect from "@components/ButtonSelect/ButtonSelect.tsx";
+import FileInput from "@components/FileInput/FileInput.tsx";
+import ControlRating from "@components/ControllRaiting/ControlRating.tsx";
+import { useForm } from "react-hook-form"
 
 const CreatePost = () => {
-    const [value, setValue] = React.useState<File | null>(null)
+    const {
+        register,
+        handleSubmit,
+        setValue,
+    } = useForm()
 
-    const handleChange = (newValue: File | null) => {
-        setValue(newValue)
+    // const [type, setType] = React.useState('');
+    const handleChangeType = (event: SelectChangeEvent) => {
+        setValue('reviewType', event.target.value as string)
+    };
+
+    const onSubmit = (data): void => {
+        console.log(data)
     }
+
     return(
         <>
-            <Box>
+            <Box sx={{width: '70%'}}>
                 <Typography variant={'h2'}>Create you review</Typography>
-                <FormControl sx={{ m: 1, width: 300 }}>
-                    <MuiFileInput value={value} onChange={handleChange} />
-                    <InputLabel id="demo-multiple-name-label">typeReviews</InputLabel>
-                    <Select
-                        labelId="demo-multiple-name-label"
-                        id="demo-multiple-name"
-                        multiple
-                        input={<OutlinedInput label="Name" />}
-                    >
-                        {typeReviews.map((name) => (
-                            <MenuItem
-                                key={name}
-                                value={name}
-                            >
-                                {name}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                <FormControl component={'form'} fullWidth onSubmit={handleSubmit(onSubmit)}>
+                    <TextField {...register("reviewName")} label={"Name review"}/>
+                    <ButtonSelect {...register("reviewType")} handleChangeType={handleChangeType}/>
+                    <Box sx={{display: "flex", justifyContent: 'space-between', alignItems: 'center'}}>
+                        <ControlRating setValue={setValue}/>
+                        <TextField {...register("reviewAuthor")} label={'Author'}/>
+                        <FileInput setValue={setValue} />
+                    </Box>
+                    <TextField {...register("reviewDescription")} multiline maxRows={10} label={'Write your opinion about the product'}/>
+                    <Button type="submit" sx={{m: 2}} variant="outlined">Submit</Button>
                 </FormControl>
             </Box>
         </>

@@ -44,7 +44,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
                     primary: grey[100],
                     secondary: grey[100],
                 },
-
             }),
     },
 });
