@@ -11,6 +11,7 @@ import FileInput from "@components/FileInput/FileInput.tsx";
 import ControlRating from "@components/ControllRaiting/ControlRating.tsx";
 import { useForm } from "react-hook-form"
 
+
 const CreatePost = () => {
     const {
         register,

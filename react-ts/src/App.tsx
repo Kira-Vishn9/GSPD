@@ -49,7 +49,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 function App() {
-    const [auth, setAuth] = React.useState(true);
+    const [auth, setAuth] = React.useState(false);
     return (
     <>
         <authContext.Provider value={{ auth, setAuth }}>

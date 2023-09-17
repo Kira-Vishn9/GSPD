@@ -3,6 +3,7 @@ import {Box, TextField, Button} from "@muiDep/index.ts";
 import * as Links from 'react-router-dom'
 import {SubmitHandler, useForm} from "react-hook-form";
 import React from "react";
+import GoogleAuth from '../GoogleAuth/GoogleAuth.tsx'
 
 
 type Inputs ={
@@ -17,6 +18,7 @@ const SignIn = () => {
 
     return(
         <div className={styles.wrap}>
+            <GoogleAuth />
             <h2>
                 Sign In
             </h2>
@@ -29,6 +31,7 @@ const SignIn = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit(onSubmit)}
             >
+
                 <TextField id="standard-basic" label="Email" variant="standard" {...register("mail", { required: true, pattern: /^\S+@\S+$/i })} />
                 <TextField id="standard-basic" label="Password" variant="standard" {...register("password")} />
                 <span className={styles.strSign}>

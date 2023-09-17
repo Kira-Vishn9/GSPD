@@ -3,6 +3,7 @@ import {Box, Button, TextField} from "@muiDep/index.ts";
 import * as Links from 'react-router-dom'
 import { useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
+import {handleRegistration} from "@/service";
 
 type Inputs ={
     mail: string,
@@ -10,8 +11,8 @@ type Inputs ={
 };
 const SignUp = () => {
     const { register, handleSubmit } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = async () => {
-        console.log('hi')
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        handleRegistration(data)
     }
 
     return(
