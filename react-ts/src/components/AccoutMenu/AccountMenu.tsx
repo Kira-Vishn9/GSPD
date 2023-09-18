@@ -4,6 +4,7 @@ import {useContext} from "react";
 import {authContext} from "@context/AuthContext.ts";
 import {Link} from 'react-router-dom'
 import ButtonAdd from "@components/ButtonAdd/ButtonAdd.tsx";
+import {removeToken} from "@/service/helper.ts";
 
 
 export default function AccountMenu() {
@@ -19,6 +20,7 @@ export default function AccountMenu() {
 
     const logout = () => {
         setAuth(false)
+        removeToken()
         handleClose()
     }
     return (

@@ -1,20 +1,39 @@
-import Header from "@components/Header/Header.tsx";
+
 import CardPopular from "@components/CardPopular/CardPopular.tsx";
 import {Grid, Typography} from "@muiDep/index.ts";
 import CardGames from "@components/CardGames/CardGames.tsx";
 import CardBooks from "@components/CardBooks/CardBooks.tsx";
 import CardMovies from "@components/CardMovies/CardMovies.tsx";
+import {useEffect, useState} from "react";
+import {getPopularCards} from "@/service";
 
 const Main = () => {
+    const [popularCards, setPopularCards] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getPopularCards();
+                console.log(response)
+                setPopularCards(response)
+            } catch (error) {
+                console.error("Ошибка при получении данных с сервера", error);
+            }
+        };
+        fetchData();
+    }, []);
     return (
         <>
             <Typography variant="h4" sx={{textAlign: 'left', m: 2}}>
                 Popular choice of users
             </Typography>
             <Grid container>
-                {[1,2,3,4,5,6].map((value: number) => {
-                    return  <CardPopular key={value} />
-                })}
+                {popularCards ? (
+                    popularCards.map((cardData, index) => (
+                        <CardPopular key={index} cardData={cardData} />
+                    ))
+                ) : (
+                    <p>Loading...</p> // Отобразите загрузочное сообщение или что-то подобное
+                )}
             </Grid>
             <Typography variant="h4" sx={{textAlign: 'left', m: 2}}>
                 Popular game

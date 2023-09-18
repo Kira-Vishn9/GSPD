@@ -2,8 +2,11 @@ import styles from './style.module.css'
 import {Box, TextField, Button} from "@muiDep/index.ts";
 import * as Links from 'react-router-dom'
 import {SubmitHandler, useForm} from "react-hook-form";
-import React from "react";
+import React, {useContext} from "react";
 import GoogleAuth from '../GoogleAuth/GoogleAuth.tsx'
+import {handleLogIn} from "@/service";
+import {authContext} from "@context/AuthContext.ts";
+import {useNavigate} from 'react-router-dom'
 
 
 type Inputs ={
@@ -11,9 +14,15 @@ type Inputs ={
     password: string,
 };
 const SignIn = () => {
+    const { setAuth} = useContext(authContext)
+    const navigate = useNavigate();
     const { register, handleSubmit} = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = async () => {
-     console.log('hi')
+    const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
+        const status = await handleLogIn(data)
+        if(status === 200) {
+            setAuth(true)
+            navigate('/*', { replace: true })
+        }
     }
 
     return(

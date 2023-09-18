@@ -13,6 +13,8 @@ import Profile from "@/page/Profile/Profile.tsx";
 import OpenCard from "@/page/OpenCard/OpenCard.tsx";
 import FeedPosts from '@/page/FeedPosts/FeedPosts.tsx'
 import CreatePost from '@/page/CreatePost/CreatePost.tsx'
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import {getToken} from "@/service/helper.ts";
 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -49,9 +51,10 @@ const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 function App() {
-    const [auth, setAuth] = React.useState(false);
+    const [auth, setAuth] = React.useState(!!getToken());
     return (
     <>
+    <GoogleOAuthProvider clientId="<your_client_id>">
         <authContext.Provider value={{ auth, setAuth }}>
             <BrowserRouter>
                 <Layout>
@@ -67,6 +70,7 @@ function App() {
                 </Layout>
             </BrowserRouter>
         </authContext.Provider>
+    </GoogleOAuthProvider>
     </>
   )
 }

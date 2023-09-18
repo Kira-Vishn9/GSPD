@@ -4,12 +4,13 @@ const GoogleAuth = () => {
     return(
         <>
             <GoogleLogin
-                onSuccess={(credentialResponse) => {
+                onSuccess={credentialResponse => {
                     console.log(credentialResponse);
                 }}
                 onError={() => {
                     console.log('Login Failed');
                 }}
+                useOneTap
             />
         </>
     )
