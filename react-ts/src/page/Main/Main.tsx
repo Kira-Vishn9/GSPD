@@ -13,7 +13,6 @@ const Main = () => {
         const fetchData = async () => {
             try {
                 const response = await getPopularCards();
-                console.log(response)
                 setPopularCards(response)
             } catch (error) {
                 console.error("Ошибка при получении данных с сервера", error);

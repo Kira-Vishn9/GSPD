@@ -15,6 +15,7 @@ import FeedPosts from '@/page/FeedPosts/FeedPosts.tsx'
 import CreatePost from '@/page/CreatePost/CreatePost.tsx'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import {getToken} from "@/service/helper.ts";
+import {Cloudinary} from "@cloudinary/url-gen";
 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -52,6 +53,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
 
 function App() {
     const [auth, setAuth] = React.useState(!!getToken());
+    const cld = new Cloudinary({cloud: {cloudName: 'dxiyv9oni'}});
+
     return (
     <>
     <GoogleOAuthProvider clientId="<your_client_id>">

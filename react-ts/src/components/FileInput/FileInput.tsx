@@ -8,7 +8,7 @@ const FileInput = ({setValue}) => {
     const [value, setValues] = React.useState<File | null>(null)
 
     const handleChangeFile = (newValue: File | null) => {
-        setValue('reviewFile', newValue)
+        setValue(newValue)
         setValues(newValue)
     };
 
