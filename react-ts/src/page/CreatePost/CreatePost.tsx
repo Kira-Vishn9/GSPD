@@ -43,7 +43,7 @@ const CreatePost = () => {
         const onSubmit = async (data): void => {
             const urlImg = await uploadImg()
             setValue('reviewFile', urlImg)
-            console.log(data)
+
         }
 
     return(
