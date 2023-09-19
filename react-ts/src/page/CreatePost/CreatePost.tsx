@@ -11,6 +11,7 @@ import ButtonSelect from "@components/ButtonSelect/ButtonSelect.tsx";
 import FileInput from "@components/FileInput/FileInput.tsx";
 import ControlRating from "@components/ControllRaiting/ControlRating.tsx";
 import { useForm } from "react-hook-form"
+import {postNewReview} from "@/service";
 
 
 const CreatePost = () => {
@@ -23,7 +24,7 @@ const CreatePost = () => {
 
     // const [type, setType] = React.useState('');
     const handleChangeType = (event: SelectChangeEvent) => {
-        setValue('reviewType', event.target.value as string)
+        setValue('type', event.target.value as string)
     };
 
     const uploadImg = async () => {
@@ -41,9 +42,13 @@ const CreatePost = () => {
     };
 
         const onSubmit = async (data): void => {
-            const urlImg = await uploadImg()
-            setValue('reviewFile', urlImg)
-
+            await uploadImg()
+                .then((url) => {
+                setValue('img', url)})
+                .then((resp) => {
+                postNewReview(data)
+                    console.log(resp ,data)
+            })
         }
 
     return(
@@ -51,14 +56,15 @@ const CreatePost = () => {
             <Box sx={{width: '70%'}}>
                 <Typography variant={'h2'}>Create you review</Typography>
                 <FormControl component={'form'} fullWidth onSubmit={handleSubmit(onSubmit)}>
-                    <TextField {...register("reviewName")} label={"Name review"}/>
-                    <ButtonSelect {...register("reviewType")} handleChangeType={handleChangeType}/>
+                    <TextField {...register("titlePost")} label={"Name review"}/>
+                    <TextField sx={{marginTop: 1}} {...register("title")} label={"Name post"}/>
+                    <ButtonSelect {...register("type")} handleChangeType={handleChangeType}/>
                     <Box sx={{display: "flex", justifyContent: 'space-between', alignItems: 'center'}}>
                         <ControlRating setValue={setValue}/>
-                        <TextField {...register("reviewAuthor")} label={'Author'}/>
+                        <TextField {...register("author")} label={'Author'}/>
                         <FileInput setValue={setImg} />
                     </Box>
-                    <TextField {...register("reviewDescription")} multiline maxRows={10} label={'Write your opinion about the product'}/>
+                    <TextField {...register("text")} multiline maxRows={10} label={'Write your opinion about the product'}/>
                     <Button type="submit" sx={{m: 2}} variant="outlined">Submit</Button>
                 </FormControl>
             </Box>

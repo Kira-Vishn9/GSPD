@@ -42,7 +42,18 @@ export const handleLogIn = async (formData: IFormDataDto): Promise<number | unde
 
 export const getPopularCards = async() => {
     try{
-       return  await httpClient.get('/post/popular')
+        const data = await httpClient.get('/post/popular')
+        console.log(data)
+        return data
+    }catch (error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const postNewReview = async(data) => {
+    try{
+        return  await httpClient.post('/post/create', data)
     }catch (error: unknown){
         console.error('Login error:', error);
         throw error;

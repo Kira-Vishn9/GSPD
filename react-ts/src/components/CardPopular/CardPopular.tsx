@@ -13,7 +13,7 @@ const CardPopular = ({ cardData }) => {
                             image={cardData.img}
                             alt={cardData.title}
                         />
-                        <CardContent sx={{ height: '70px', textAlignLast: 'left' }}>
+                        <CardContent sx={{ height: '70px', textAlignLast: 'left', boxSizing: "content-box"}}>
                             <Typography gutterBottom color="text.secondary" component="span">
                                 {cardData.author}
                             </Typography>

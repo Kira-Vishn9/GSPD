@@ -12,10 +12,11 @@ const ControlRating = ({setValue}) => {
         >
             <Typography component="legend">Your mark</Typography>
             <Rating
+                max={10}
                 name="simple-controlled"
                 defaultValue={0}
                 onChange={(event, newValue) => {
-                    setValue('Rating',newValue);
+                    setValue('ratingAuthor',newValue);
                 }}
             />
         </Box>
