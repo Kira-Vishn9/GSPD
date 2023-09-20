@@ -1,6 +1,6 @@
 import { httpClient} from "@/api";
-import {AxiosResponse} from 'axios';
 import {setToken} from "@/service/helper.ts";
+import {CommentData, justCard} from "@/Interface/Interface.ts";
 
 interface IFormDataDto {
     mail: string;
@@ -43,7 +43,6 @@ export const handleLogIn = async (formData: IFormDataDto): Promise<number | unde
 export const getPopularCards = async() => {
     try{
         const data = await httpClient.get('/post/popular')
-        console.log(data)
         return data
     }catch (error: unknown){
         console.error('Login error:', error);
@@ -51,10 +50,40 @@ export const getPopularCards = async() => {
     }
 }
 
-export const postNewReview = async(data) => {
+
+export const getPopular = async(type: string, count: number) => {
+    try{
+        const data = await httpClient.get(`/post/popular/${type}?count=${count}`)
+        return data
+    }catch (error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const postNewReview = async(data: justCard) => {
     try{
         return  await httpClient.post('/post/create', data)
     }catch (error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const openCard = async (cardId: string, page: number) => {
+    try{
+        return  await httpClient.get(`/post/${cardId}?page=${page}`)
+    }catch (error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+};
+
+export const addNewComment = async (postId: string | undefined, commentData: CommentData) => {
+    try{
+        const response = await httpClient.post(`/post/${postId}/comment`, commentData);
+        return response
+    }catch(error: unknown){
         console.error('Login error:', error);
         throw error;
     }

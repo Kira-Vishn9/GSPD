@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Box, Rating, Typography} from '@muiDep/index.ts';
 
+// @ts-ignore
 const ControlRating = ({setValue}) => {
-
-
+    // @ts-ignore
     return (
         <Box
             sx={{
@@ -12,11 +12,10 @@ const ControlRating = ({setValue}) => {
         >
             <Typography component="legend">Your mark</Typography>
             <Rating
-                max={10}
                 name="simple-controlled"
                 defaultValue={0}
-                onChange={(event, newValue) => {
-                    setValue('ratingAuthor',newValue);
+                onChange={(newValue) => {
+                    setValue('Rating',newValue);
                 }}
             />
         </Box>

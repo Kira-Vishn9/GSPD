@@ -1,26 +1,31 @@
 import { CardActions, Card, Typography, CardMedia, CardContent} from '@muiDep/index.ts'
 import BasicRating from "@components/BasicRating/BasicRating.tsx";
 import {Link} from 'react-router-dom'
-const CardGames = () => {
+import {CardProp} from "@/Interface/Interface.ts";
+
+interface CardGamesProps {
+    cardData: CardProp;
+}
+const CardGames = ({cardData}: CardGamesProps) => {
     return (
         <>
-            <Link to={'/info'}>
+            <Link to={`/info/${cardData._id}`}>
                 <Card sx={{ width: 318, borderRadius: '25px', m: 2 }}>
                     <CardMedia
                         sx={{ height: 380 }}
-                        image="https://picsum.photos/800/600?random"
+                        image={cardData.img}
                         title="green iguana"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="body1" component="span">
-                            Lizard
+                            cardData.title
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ display: 'flex', justifyContent: 'space-between', p: 2}}>
                         <Typography variant="body1">
-                            userName
+                            cardData.author
                         </Typography>
-                        <BasicRating />
+                        <BasicRating value={cardData.totalRating} length={5}/>
                     </CardActions>
                 </Card>
             </Link>

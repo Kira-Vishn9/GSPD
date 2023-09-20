@@ -1,7 +1,11 @@
 import { Card, Typography, CardActionArea, CardMedia, CardContent } from '@muiDep/index.ts'
 import { Link } from 'react-router-dom'
+import {CardProp} from "@/Interface/Interface.ts";
+interface CardPopularProps {
+    cardData: CardProp;
+}
+const CardPopular = ({ cardData }: CardPopularProps) => {
 
-const CardPopular = ({ cardData }) => {
     return (
         <>
             <Link to={`/info/${cardData._id}`}>

@@ -3,6 +3,7 @@ import { ColorModeContext } from "@context/ColorModeContext.ts";
 import { MuiFileInput } from "@muiDep/index.ts";
 
 
+// @ts-ignore
 const FileInput = ({setValue}) => {
     const { mode } = useContext(ColorModeContext);
     const [value, setValues] = React.useState<File | null>(null)

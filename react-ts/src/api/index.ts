@@ -7,4 +7,4 @@ export const httpClient = Axios.create({
     headers: {'Authorization': localStorage.getItem('authToken')}
 })
 
-httpClient.interceptors.response.use((axiosResponse) => axiosResponse.data)
+// httpClient.interceptors.response.use((axiosResponse) => axiosResponse.data)

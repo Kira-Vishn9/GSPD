@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css'
 import Main from "@/page/Main/Main.tsx";
@@ -54,7 +54,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
 function App() {
     const [auth, setAuth] = React.useState(!!getToken());
     const cld = new Cloudinary({cloud: {cloudName: 'dxiyv9oni'}});
-
+    const { postId } = useParams();
+    
     return (
     <>
     <GoogleOAuthProvider clientId="<your_client_id>">
@@ -66,7 +67,7 @@ function App() {
                         <Route path={'/signin'} element={<SignIn />} />
                         <Route path={'/signup'} element={<SignUp />} />
                         <Route path={'/profile'} element={<Profile />} />
-                        <Route path={'/info'} element={<OpenCard />} />
+                        <Route path={'/info/:postId'} element={<OpenCard />} />
                         <Route path={'/home'} element={<FeedPosts />} />
                         <Route path={'/create'} element={<CreatePost />} />
                     </Routes>
