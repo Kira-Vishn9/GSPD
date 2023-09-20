@@ -36,4 +36,6 @@ const Comments = ({ data, setPage }: { data: Comment[] | null, setPage: () => vo
     );
 };
 
+// comment
+
 export default Comments;
