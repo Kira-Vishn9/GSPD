@@ -25,6 +25,7 @@ export const handleRegistration = async (formData: IFormDataDto) => {
 export const handleLogIn = async (formData: IFormDataDto): Promise<void> => {
     try {
         const response = await httpClient.post('/auth/login', formData);
+        console.log(response)
         setToken(response.data.token.access_token)
     } catch (error: unknown) {
         console.error('Login error:', error);

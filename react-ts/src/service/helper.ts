@@ -1,6 +1,7 @@
 const keyToken = 'authToken'
 
 export const getToken = () => {
+    console.log(localStorage.getItem(keyToken))
     return localStorage.getItem(keyToken)
 }
 
