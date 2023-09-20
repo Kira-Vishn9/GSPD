@@ -14,6 +14,7 @@ type Inputs ={
     mail: string,
     password: string,
 };
+
 const SignIn = () => {
     const { setAuth} = useContext(authContext)
     const navigate = useNavigate();
