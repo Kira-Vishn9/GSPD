@@ -14,7 +14,59 @@ import ControlRating from "@components/ControllRaiting/ControlRating.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { postNewReview } from "@/service";
 
-
+interface CloudinaryUploadResponse {
+    data: {
+        asset_id: string;
+        public_id: string;
+        version: number;
+        version_id: string;
+        signature: string;
+        width: number;
+        height: number;
+        format: string;
+        resource_type: string;
+        created_at: string;
+        tags: string[];
+        bytes: number;
+        type: string;
+        etag: string;
+        placeholder: boolean;
+        url: string;
+        secure_url: string;
+        folder: string;
+        access_mode: string;
+        original_filename: string;
+    };
+    status: number;
+    statusText: string;
+    headers: {
+        'cache-control': string;
+        'content-type': string;
+    };
+    config: {
+        transitional: {
+            silentJSONParsing: boolean;
+            forcedJSONParsing: boolean;
+            clarifyTimeoutError: boolean;
+        };
+        adapter: string;
+        transformRequest: null[];
+        transformResponse: null[];
+        timeout: number;
+        xsrfCookieName: string;
+        xsrfHeaderName: string;
+        maxContentLength: number;
+        maxBodyLength: number;
+        env: Record<string, any>;
+        headers: {
+            Accept: string;
+        };
+        method: string;
+        url: string;
+        data: Record<string, any>;
+    };
+    request: Record<string, any>;
+}
 interface IData {
     titlePost: string;
     title: string;
@@ -41,7 +93,9 @@ const CreatePost = () => {
             formData.append('file', img);
             formData.append('upload_preset', 'lmo3uadu');
 
-            return await axios.post('https://api.cloudinary.com/v1_1/dxiyv9oni/image/upload', formData).then((response) => {
+            return await axios.post('https://api.cloudinary.com/v1_1/dxiyv9oni/image/upload', formData)
+                .then((response: CloudinaryUploadResponse) => {
+                    console.log(response)
                 return response.data.secure_url;
             });
         } else {
