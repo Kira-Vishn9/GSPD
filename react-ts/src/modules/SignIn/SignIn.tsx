@@ -7,6 +7,7 @@ import GoogleAuth from '../GoogleAuth/GoogleAuth.tsx'
 import {handleLogIn} from "@/service";
 import {authContext} from "@context/AuthContext.ts";
 import {useNavigate} from 'react-router-dom'
+import {getToken} from "@/service/helper.ts";
 
 
 type Inputs ={
@@ -19,7 +20,7 @@ const SignIn = () => {
     const { register, handleSubmit} = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
         const status = await handleLogIn(data)
-        if(status === 200) {
+        if(getToken() !== undefined) {
             setAuth(true)
             navigate('/*', { replace: true })
         }
