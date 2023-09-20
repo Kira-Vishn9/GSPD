@@ -12,6 +12,7 @@ export default defineConfig({
       '@muiDep': path.resolve(__dirname, 'src/muiDependencies'),
       '@modules': path.resolve(__dirname, 'src/modules'),
       '@context': path.resolve(__dirname, 'src/context'),
+      '@config': path.resolve(__dirname, 'src/config'),
     }
   }
 })

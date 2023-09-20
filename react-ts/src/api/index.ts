@@ -1,8 +1,9 @@
 import Axios from 'axios'
+import {apiEnv} from "@config/env.ts";
 
 export { type AxiosResponse } from 'axios'
 export const httpClient = Axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: apiEnv.baseUrl,
     withCredentials: true,
     headers: {'Authorization': localStorage.getItem('authToken')}
 })
