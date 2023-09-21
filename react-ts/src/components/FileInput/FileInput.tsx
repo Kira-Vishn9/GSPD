@@ -3,14 +3,13 @@ import { ColorModeContext } from "@context/ColorModeContext.ts";
 import { MuiFileInput } from "@muiDep/index.ts";
 
 
-// @ts-ignore
 const FileInput = ({setValue}) => {
     const { mode } = useContext(ColorModeContext);
-    const [value, setValues] = React.useState<File | null>(null)
+    const [valueStr, setValuesStr] = React.useState<File | null>(null)
 
-    const handleChangeFile = (newValue: File | null) => {
+    const handleChangeFile =  (newValue: File | null) => {
         setValue(newValue)
-        setValues(newValue)
+        setValuesStr(newValue)
     };
 
     const outlinedInputStyles = {
@@ -36,7 +35,7 @@ const FileInput = ({setValue}) => {
                     ...outlinedInputStyles
                 }}
                 onChange={handleChangeFile}
-                value={value}
+                value={valueStr}
             />
         </>
     );

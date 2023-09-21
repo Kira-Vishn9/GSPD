@@ -11,6 +11,7 @@ const CardMovies = ({cardData}: CardMoviesProps) => {
             <Link to={`/info${cardData._id}`}>
                 <Card sx={{ width: 318, borderRadius: '25px', m: 2 }}>
                     <CardMedia
+
                         sx={{ height: 380 }}
                         image={cardData.img}
                         title="green iguana"

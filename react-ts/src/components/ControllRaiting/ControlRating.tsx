@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {Box, Rating, Typography} from '@muiDep/index.ts';
+import {useState} from 'react'
 
 // @ts-ignore
 const ControlRating = ({setValue}) => {
+    const [newValue, setNewValue] = useState<number | null>(null)
     // @ts-ignore
     return (
         <Box
@@ -14,8 +16,11 @@ const ControlRating = ({setValue}) => {
             <Rating
                 name="simple-controlled"
                 defaultValue={0}
-                onChange={(newValue) => {
-                    setValue('Rating',newValue);
+                max={10}
+                value={newValue ? newValue : 0}
+                onChange={(event, value) => {
+                    setNewValue(value)
+                    setValue('rating',value);
                 }}
             />
         </Box>
