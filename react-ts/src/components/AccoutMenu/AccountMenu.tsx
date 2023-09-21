@@ -81,18 +81,18 @@ export default function AccountMenu() {
                     <ButtonAdd/> Add review
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                    Add another account
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
-                </MenuItem>
+                {/*<MenuItem onClick={handleClose}>*/}
+                {/*    <ListItemIcon>*/}
+                {/*        <PersonAdd fontSize="small" />*/}
+                {/*    </ListItemIcon>*/}
+                {/*    Add another account*/}
+                {/*</MenuItem>*/}
+                {/*<MenuItem onClick={handleClose}>*/}
+                {/*    <ListItemIcon>*/}
+                {/*        <Settings fontSize="small" />*/}
+                {/*    </ListItemIcon>*/}
+                {/*    Settings*/}
+                {/*</MenuItem>*/}
                 <MenuItem onClick={logout}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

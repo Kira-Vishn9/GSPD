@@ -68,7 +68,10 @@ function App() {
                         <Route path={'/signup'} element={<SignUp />} />
                         <Route path={'/profile'} element={<Profile />} />
                         <Route path={'/info/:postId'} element={<OpenCard />} />
-                        <Route path={'/home'} element={<FeedPosts />} />
+                        <Route path={'/Home'} element={<FeedPosts />} />
+                        <Route path={'/Game'} element={<FeedPosts />} />
+                        <Route path={'/Book'} element={<FeedPosts />} />
+                        <Route path={'/Movie'} element={<FeedPosts />} />
                         <Route path={'/create'} element={<CreatePost />} />
                     </Routes>
                 </Layout>
@@ -116,3 +119,4 @@ export default function ToggleColorMode() {
         </ColorModeContext.Provider>
     );
 }
+//<Route path={'/info/:postId'} element={<OpenCard />} />

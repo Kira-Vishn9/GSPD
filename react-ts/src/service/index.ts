@@ -54,9 +54,10 @@ export const getPopular = async(type: string, count: number) => {
     }
 }
 
-export const postNewReview = async(data: justCard) => {
+export const postNewReview = async (data) => {
+    console.log(data)
     try{
-        return  await httpClient.post('/post/create', data)
+        return await httpClient.post('/post/create', data)
     }catch (error: unknown){
         console.error('Login error:', error);
         throw error;
@@ -76,6 +77,26 @@ export const addNewComment = async (postId: string | undefined, commentData: Com
     try{
         const response = await httpClient.post(`/post/${postId}/comment`, commentData);
         return response
+    }catch(error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const getSpecialPost = async (type: string) => {
+    try{
+        const res =  await httpClient.get(`/post/special/${type}`);
+        return res
+    }catch(error: unknown){
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const getProfilePost = async () => {
+    try{
+        const res =  await httpClient.get(`/post/profile`);
+        return res
     }catch(error: unknown){
         console.error('Login error:', error);
         throw error;

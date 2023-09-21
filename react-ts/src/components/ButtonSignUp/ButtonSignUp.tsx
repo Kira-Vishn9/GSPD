@@ -5,7 +5,7 @@ const ButtonSignUp = () => {
     return(
         <>
             <Link to={'/signup'}>
-                <Button variant="contained" sx={{marginLeft: '20px'}} >
+                <Button variant="contained" sx={{marginLeft: '20px', marginRight: '20px'}} >
                     Sign Up
                 </Button>
             </Link>

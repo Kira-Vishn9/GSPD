@@ -18,10 +18,9 @@ const Header = () => {
     const { mode } = useContext(ColorModeContext);
     const { auth } = useContext(authContext);
     const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
-    console.log(mode)
     return(
         <>
-            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', m: '0px 120px', typography: 'body1'}}>
+            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', m: '0px 120px', typography: 'body1', contain: 'content', p: "0 20px"}}>
                 <RouterLink to={'/main'} >
                     <Typography variant="h2">4Ask</Typography>
                 </RouterLink>
@@ -35,11 +34,11 @@ const Header = () => {
                         }}
                         onClick={preventDefault}
                     >
-                        <RouterLink to="/home">home</RouterLink>
-                        <RouterLink to="/games" >games</RouterLink>
-                        <RouterLink to="/movies" >movies</RouterLink>
-                        <RouterLink to="/books" >books</RouterLink>
-                        <RouterLink to="/about" >about us</RouterLink>
+                        <RouterLink to="/home">Home</RouterLink>
+                        <RouterLink to="/Game" >Games</RouterLink>
+                        <RouterLink to="/Movie" >Movies</RouterLink>
+                        <RouterLink to="/Book" >Books</RouterLink>
+                        <RouterLink to="#/about" >About us</RouterLink>
                     </Box   >
                 </nav>
                 <div><DarkAndWhite /></div>

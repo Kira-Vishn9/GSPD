@@ -69,7 +69,7 @@ const OpenCard = () => {
                 </Typography>
                 <Box sx={{width: '80%'}}>
                     <CardMedia
-                        sx={{width: 'auto',borderRadius: '40px', m: 2}}
+                        sx={{maxWidth: '800px', maxHeight: '600px', borderRadius: '40px', m: 2}}
                         component="img"
                         image={`${data.post.img}`}
                         alt="green iguana"
