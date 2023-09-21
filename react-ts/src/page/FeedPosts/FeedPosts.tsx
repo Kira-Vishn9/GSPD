@@ -1,4 +1,4 @@
-import { CardMedia, Box, ImageListItemBar, ImageListItem, ImageList} from "@muiDep/index.ts";
+import {CardMedia, Box, ImageListItemBar, ImageListItem, ImageList, Pagination} from "@muiDep/index.ts";
 import { Link } from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {getSpecialPost} from "@/service";
@@ -7,16 +7,20 @@ import {Typography} from "@mui/material";
 const FeedPosts = () => {
     const [data, setData] = useState(null)
     const  type = (window.location.pathname).split('/')[1];
+    const [page, setPage] = useState(1)
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await getSpecialPost(type);
+                const res = await getSpecialPost(type, page);
                 setData(res.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }}
         fetchData()
-    }, [data])
+    }, [data, page])
 
     if(data === null) {
         return (
@@ -32,7 +36,7 @@ const FeedPosts = () => {
         <>
                 <Box sx={{width: '100%', margin: '50px auto', textAlign: '-webkit-center'}}>
                     <ImageList sx={{ width: '60%', display: 'flex', flexDirection: 'column'  }}>
-                        {data.map((item) => (
+                        {data.res.map((item) => (
                             <Link to={`/info/${item._id}`}>
                                 <ImageListItem key={item.img}>
                                     <CardMedia
@@ -47,6 +51,7 @@ const FeedPosts = () => {
                                 </ImageListItem>
                             </Link>
                         ))}
+                        <Pagination count={data.totalPages} sx={{ alignSelf: "center"}} page={page} onChange={handleChange}/>
                     </ImageList>
                 </Box>
         </>

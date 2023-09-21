@@ -1,6 +1,6 @@
 import { httpClient} from "@/api";
 import {setToken} from "@/service/helper.ts";
-import {CommentData, justCard} from "@/Interface/Interface.ts";
+import {CommentData} from "@/Interface/Interface.ts";
 
 interface IFormDataDto {
     mail: string;
@@ -83,9 +83,9 @@ export const addNewComment = async (postId: string | undefined, commentData: Com
     }
 }
 
-export const getSpecialPost = async (type: string) => {
+export const getSpecialPost = async (type: string, page: number) => {
     try{
-        const res =  await httpClient.get(`/post/special/${type}`);
+        const res =  await httpClient.get(`/post/special/${type}?page=${page}`);
         return res
     }catch(error: unknown){
         console.error('Login error:', error);
