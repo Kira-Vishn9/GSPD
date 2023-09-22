@@ -3,36 +3,36 @@ import { ColorModeContext } from "@context/ColorModeContext.ts";
 import { MuiFileInput } from "@muiDep/index.ts";
 
 
-const FileInput = ({setValue}) => {
-    const { mode } = useContext(ColorModeContext);
-    const [valueStr, setValuesStr] = React.useState<File | null>(null)
 
-    const handleChangeFile =  (newValue: File | null) => {
-        setValue(newValue)
-        setValuesStr(newValue)
+const FileInput = ({ setValue }: { setValue: React.Dispatch<React.SetStateAction<File | null>> }) => {
+    const { mode } = useContext(ColorModeContext);
+    const [valueStr, setValuesStr] = React.useState<File | null>(null);
+
+    const handleChangeFile = (newValue: File | null) => {
+        setValue(newValue);
+        setValuesStr(newValue);
     };
 
     const outlinedInputStyles = {
         "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: '#757575',
+            borderColor: "#757575",
         },
         "& .css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: mode === 'dark' ? 'white' : 'black',
+            borderColor: mode === "dark" ? "white" : "black",
         },
-        "& .css-ittuaa-MuiInputAdornment-root":{
-            color: mode === 'dark' ? 'rgb(255 255 255 / 1)' : ''
+        "& .css-ittuaa-MuiInputAdornment-root": {
+            color: mode === "dark" ? "rgb(255 255 255 / 1)" : "",
         },
-        'span': {
-            color: '#ffffff'
-        }
-
+        span: {
+            color: "#ffffff",
+        },
     };
 
     return (
         <>
             <MuiFileInput
                 sx={{
-                    ...outlinedInputStyles
+                    ...outlinedInputStyles,
                 }}
                 onChange={handleChangeFile}
                 value={valueStr}

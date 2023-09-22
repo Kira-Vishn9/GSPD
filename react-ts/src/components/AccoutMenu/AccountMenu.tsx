@@ -21,6 +21,7 @@ export default function AccountMenu() {
     const logout = () => {
         setAuth(false)
         removeToken()
+        localStorage.removeItem('userId')
         handleClose()
     }
     return (

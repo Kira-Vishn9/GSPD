@@ -6,7 +6,6 @@ import React, {useEffect, useState} from "react";
 import {addReviewFromUser, checkReviewFromUser, openCard} from "@/service";
 import ButtonLike from "@components/ButtonLike/ButtonLike.tsx";
 import {useParams} from "react-router-dom";
-import ControlRating from "@components/ControllRaiting/ControlRating.tsx";
 
 
 interface PostData {
@@ -35,23 +34,27 @@ interface Commentss {
 }
 const OpenCard = () => {
     const [data, setData] = useState<{ post: PostData | null,   comments: Commentss[] | null }>({ post: null, comments: null });
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState<number>(1);
     const [mark, setMark] = useState(0)
-    const { postId } = useParams()
-     const getMoreComments = () => {
-        console.log(data)
-         setPage(page + 1 )
-     }
-    const reviewFromUser = (mark) => {
+    const { postId } = useParams<{ postId: string | undefined }>();
+    const getMoreComments = () => {
+        if (page !== null) {
+            setPage(page + 1);
+        }
+    }
+
+    const reviewFromUser = (mark: number) => {
         addReviewFromUser(postId, {grade: mark})
     }
 
     useEffect(()=>{
         const fetchData = async () => {
-            checkReviewFromUser(postId).then((res)=>{
-                setMark(res.data)
-            })
+            checkReviewFromUser(postId).then(res => setMark(res.data) )
+            //     .then((res)=>{
+            //     setMark(res.data)
+            // })
             try {
+                if(!postId) return
                return await openCard(postId, page)
                    .then((res) => {
                        setData(res.data)
@@ -90,8 +93,6 @@ const OpenCard = () => {
                     <Typography variant="h4">Type: {data.post.type}</Typography>
                     <ButtonLike postId={postId}/>
                 </Box>
-
-
                 <Box sx={{ display: 'flex', justifyContent: 'space-evenly'}}>
                     <Typography variant="h5">Autor: {data.post.author}</Typography>
                     <Typography variant="h5" sx={{display: 'flex', marginLeft: '20px'}}>Rating:
@@ -107,9 +108,11 @@ const OpenCard = () => {
                     defaultValue={0}
                     max={5}
                     value={mark}
-                    onChange={(event, value) => {
-                        setMark(value)
-                        reviewFromUser(value)
+                    onChange={(event: React.SyntheticEvent<Element, Event>, value: number | null) => {
+                        if (value !== null) {
+                            setMark(value);
+                            reviewFromUser(value);
+                        }else{console.log(event)}
                     }}
                 />
                 <Box sx={{width: '80%', m: 3}}>

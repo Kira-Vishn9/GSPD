@@ -19,8 +19,9 @@ const ControlRating = ({setValue}) => {
                 max={10}
                 value={newValue ? newValue : 0}
                 onChange={(event, value) => {
+                    console.log(event)
                     setNewValue(value)
-                    setValue('rating',value);
+                    setValue('ratingAuthor',value);
                 }}
             />
         </Box>

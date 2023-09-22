@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {getProfilePost} from "@/service";
 import {Typography} from "@mui/material";
+import {justCard} from "@/Interface/Interface.ts";
+
 const Profile = () => {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<justCard[] | null>(null);
     useEffect(() => {
         const fetchData = async () => {
             try {

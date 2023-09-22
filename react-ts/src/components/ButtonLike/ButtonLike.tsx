@@ -2,28 +2,30 @@ import {FavoriteIcon , Box} from '@muiDep//index.ts'
 import { pink } from '@mui/material/colors';
 import {useEffect, useState} from 'react'
 import {checkLike, targetLike} from "@/service";
-const ButtonLike = ({postId}) => {
+// @ts-ignore
+const ButtonLike = ({postId}: IntrinsicAttributes & (string | number) ) => {
     const [colorit, setColorit] = useState('')
 
-    useEffect(()=>{
-        const wrapF = async () =>{
-            await checkLike(postId)
-                .then((data) => {
-                    if(data.data.userIndex !== 0){
-                        setColorit(pink[500])
-                    }else(setColorit(''))
-                })
+    useEffect(() => {
+        const wrapF = async () => {
+            try {
+                const data = await checkLike(postId); // Передаем userId и postId
+                data.data ?  setColorit('') : setColorit(pink[500])
+            } catch (error) {
+                console.error('Error checking like:', error);
+            }
         }
-        wrapF()
-    },[])
-    const handleLike = async () => {
-        await targetLike(postId)
-            .then((data) => {
-                if(data.data.userIndex !== 0){
-                    setColorit(pink[500])
-                }else(setColorit(''))
-            })
+        wrapF();
+    }, []);
 
+    const handleLike = async () => {
+        try {
+            const data = await targetLike(postId);
+            console.log(data.data)
+            data.data ? setColorit('') : setColorit(pink[500])
+        } catch (error) {
+            console.error('Error toggling like:', error);
+        }
     }
 
     return(

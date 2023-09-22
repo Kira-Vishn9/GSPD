@@ -1,26 +1,30 @@
 import {CardMedia, Box, ImageListItemBar, ImageListItem, ImageList, Pagination} from "@muiDep/index.ts";
+import React from 'react'
 import { Link } from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {getSpecialPost} from "@/service";
 import {Typography} from "@mui/material";
+import {justCard} from "@/Interface/Interface.ts";
 
 const FeedPosts = () => {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<{ res: justCard[], totalPages: number } | null>(null);
     const  type = (window.location.pathname).split('/')[1];
     const [page, setPage] = useState(1)
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        console.log(event)
         setPage(value);
     };
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await getSpecialPost(type, page);
+                console.log(res.data)
                 setData(res.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }}
         fetchData()
-    }, [data, page])
+    }, [page])
 
     if(data === null) {
         return (

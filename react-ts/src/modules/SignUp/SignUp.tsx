@@ -17,7 +17,7 @@ const SignUp = () => {
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
        const status = await handleRegistration(data)
-        if(status === 200) {
+        if(status === 201) {
             setAuth(true)
             navigate('/*', { replace: true });
         }

@@ -5,7 +5,10 @@ export { type AxiosResponse } from 'axios'
 export const httpClient = Axios.create({
     baseURL: apiEnv.baseUrl,
     withCredentials: true,
-    headers: {'Authorization': localStorage.getItem('authToken')}
+    headers: {
+        'Authorization': localStorage.getItem('authToken'),
+        'userid': localStorage.getItem("userId")
+    }
 })
 
 // httpClient.interceptors.response.use((axiosResponse) => axiosResponse.data)
