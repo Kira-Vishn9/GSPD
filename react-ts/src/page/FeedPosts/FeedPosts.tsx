@@ -15,12 +15,13 @@ const FeedPosts = () => {
         const fetchData = async () => {
             try {
                 const res = await getSpecialPost(type, page);
+                console.log(type)
                 setData(res.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }}
         fetchData()
-    }, [data, page])
+    }, [page])
 
     if(data === null) {
         return (

@@ -8,25 +8,20 @@ interface IFormDataDto {
 }
 
 export const handleRegistration = async (formData: IFormDataDto) => {
-    try {
         const response = await httpClient.post('/auth/register', formData);
-        if(response.status === 200 ){
+        if(response.data.status === 200 ){
             await handleLogIn(formData)
             return response.status
         }else{
             throw new Error('error')
         }
-
-    } catch (error: unknown) {
-        console.error('Registration error:', error);
-    }
 };
 
 export const handleLogIn = async (formData: IFormDataDto): Promise<void> => {
     try {
         const response = await httpClient.post('/auth/login', formData);
-        console.log(response)
         setToken(response.data.token.access_token)
+        localStorage.setItem("userId", response.data.token.id)
     } catch (error: unknown) {
         console.error('Login error:', error);
         throw error;
@@ -55,11 +50,10 @@ export const getPopular = async(type: string, count: number) => {
 }
 
 export const postNewReview = async (data) => {
-    console.log(data)
     try{
         return await httpClient.post('/post/create', data)
     }catch (error: unknown){
-        console.error('Login error:', error);
+        console.error('Post error:', error);
         throw error;
     }
 }
@@ -86,7 +80,6 @@ export const addNewComment = async (postId: string | undefined, commentData: Com
 export const targetLike = async (postId: string | undefined, ) => {
     try{
         const response = await httpClient.post(`/post/${postId}/like`);
-        console.log(response)
         return response
     }catch(error: unknown){
         console.error('Like error:', error);
@@ -135,8 +128,11 @@ export const addReviewFromUser = async (postId: string | undefined, data ) => {
 }
 
 export const checkReviewFromUser = async (postId: string | undefined ) => {
+    console.log(localStorage.getItem('userId'))
+    const id = localStorage.getItem('userId')
     try{
-        const response = await httpClient.get(`/post/${postId}/rating/check`);
+        const response = await httpClient.get(`/post/${postId}/rating/check/${id}`);
+        console.log(response)
         return response
     }catch(error: unknown){
         console.error('Like error:', error);

@@ -48,9 +48,10 @@ const OpenCard = () => {
 
     useEffect(()=>{
         const fetchData = async () => {
-            checkReviewFromUser(postId).then((res)=>{
-                setMark(res.data)
-            })
+            checkReviewFromUser(postId).then(res => setMark(res.data) )
+            //     .then((res)=>{
+            //     setMark(res.data)
+            // })
             try {
                return await openCard(postId, page)
                    .then((res) => {

@@ -20,7 +20,7 @@ const SignIn = () => {
     const navigate = useNavigate();
     const { register, handleSubmit} = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
-        const status = await handleLogIn(data)
+        await handleLogIn(data)
         if(getToken() !== undefined) {
             setAuth(true)
             navigate('/*', { replace: true })
