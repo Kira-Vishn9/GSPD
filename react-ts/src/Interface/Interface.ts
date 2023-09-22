@@ -18,7 +18,7 @@ export interface CardProp {
 }
 
     export interface justCard {
-    id?: string
+    _id?: string
     title: string
     titlePost: string
     img: string
