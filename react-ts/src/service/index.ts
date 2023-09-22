@@ -6,6 +6,15 @@ interface IFormDataDto {
     mail: string;
     password: string;
 }
+interface IData {
+    titlePost: string;
+    title: string;
+    type: string;
+    author: string;
+    text: string;
+    img: string;
+    ratingAuthor: number;
+}
 
 export const handleRegistration = async (formData: IFormDataDto) => {
         const response = await httpClient.post('/auth/register', formData);
@@ -49,7 +58,7 @@ export const getPopular = async(type: string, count: number) => {
     }
 }
 
-export const postNewReview = async (data: justCard) => {
+export const postNewReview = async (data: IData) => {
     try{
         return await httpClient.post('/post/create', data)
     }catch (error: unknown){
