@@ -83,6 +83,27 @@ export const addNewComment = async (postId: string | undefined, commentData: Com
     }
 }
 
+export const targetLike = async (postId: string | undefined, ) => {
+    try{
+        const response = await httpClient.post(`/post/${postId}/like`);
+        console.log(response)
+        return response
+    }catch(error: unknown){
+        console.error('Like error:', error);
+        throw error;
+    }
+}
+export const checkLike = async (postId: string | undefined, ) => {
+    try{
+        const response = await httpClient.post(`/post/${postId}/like/check`);
+        return response
+    }catch(error: unknown){
+        console.error('Like error:', error);
+        throw error;
+    }
+}
+
+
 export const getSpecialPost = async (type: string, page: number) => {
     try{
         const res =  await httpClient.get(`/post/special/${type}?page=${page}`);
@@ -99,6 +120,26 @@ export const getProfilePost = async () => {
         return res
     }catch(error: unknown){
         console.error('Login error:', error);
+        throw error;
+    }
+}
+
+export const addReviewFromUser = async (postId: string | undefined, data ) => {
+    try{
+        const response = await httpClient.post(`/post/${postId}/rating`, data);
+        return response
+    }catch(error: unknown){
+        console.error('Like error:', error);
+        throw error;
+    }
+}
+
+export const checkReviewFromUser = async (postId: string | undefined ) => {
+    try{
+        const response = await httpClient.get(`/post/${postId}/rating/check`);
+        return response
+    }catch(error: unknown){
+        console.error('Like error:', error);
         throw error;
     }
 }
