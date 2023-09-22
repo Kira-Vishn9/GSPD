@@ -128,7 +128,6 @@ export const addReviewFromUser = async (postId: string | undefined, data: { grad
 }
 
 export const checkReviewFromUser = async (postId: string | undefined ) => {
-    console.log(localStorage.getItem('userId'))
     const id = localStorage.getItem('userId')
     try{
         const response = await httpClient.get(`/post/${postId}/rating/check/${id}`);

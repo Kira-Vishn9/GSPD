@@ -18,7 +18,6 @@ const FeedPosts = () => {
         const fetchData = async () => {
             try {
                 const res = await getSpecialPost(type, page);
-                console.log(res.data)
                 setData(res.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
