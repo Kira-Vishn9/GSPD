@@ -16,7 +16,7 @@ const Profile = () => {
                 console.error("Error fetching data:", error);
             }}
         fetchData()
-    }, [data])
+    }, [])
 
     if(data === null) {
         return (
