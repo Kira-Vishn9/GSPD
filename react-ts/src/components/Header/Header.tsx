@@ -35,10 +35,10 @@ const Header = () => {
                         onClick={preventDefault}
                     >
                         <RouterLink to="/home">Home</RouterLink>
-                        <RouterLink to="/Game" >Games</RouterLink>
-                        <RouterLink to="/Movie" >Movies</RouterLink>
-                        <RouterLink to="/Book" >Books</RouterLink>
-                        <RouterLink to="#/about" >About us</RouterLink>
+                        <RouterLink to="/Game">Games</RouterLink>
+                        <RouterLink to="/Movie">Movies</RouterLink>
+                        <RouterLink to="/Book">Books</RouterLink>
+                        <RouterLink to="#/about">About us</RouterLink>
                     </Box   >
                 </nav>
                 <div><DarkAndWhite /></div>

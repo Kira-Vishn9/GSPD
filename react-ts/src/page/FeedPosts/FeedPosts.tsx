@@ -23,7 +23,7 @@ const FeedPosts = () => {
                 console.error("Error fetching data:", error);
             }}
         fetchData()
-    }, [page])
+    }, [page, type])
 
     if(data === null) {
         return (
