@@ -1,6 +1,6 @@
 import { httpClient} from "@/api";
 import {setToken} from "@/service/helper.ts";
-import {CommentData, justCard} from "@/Interface/Interface.ts";
+import {CommentData} from "@/Interface/Interface.ts";
 
 interface IFormDataDto {
     mail: string;
@@ -118,7 +118,7 @@ export const getSpecialPost = async (type: string, page: number) => {
 
 export const getProfilePost = async () => {
     try{
-        const res =  await httpClient.get(`/post/profile`);
+        const res =  await httpClient.get(`/post/profile/${localStorage.getItem('userId')}`);
         return res
     }catch(error: unknown){
         console.error('Login error:', error);

@@ -34,12 +34,6 @@ const CreatePost = () => {
     const handleChangeType = (event: SelectChangeEvent) => {
         setValue('type', event.target.value);};
 
-    const onSubmit: SubmitHandler<IData> = async (data) => {
-        await uploadImg()
-            .then(() => {
-                postNewReview(data);
-            });
-    };
     const uploadImg = async (): Promise<void | string> => {
         const formData = new FormData();
         if (img) {
@@ -51,6 +45,14 @@ const CreatePost = () => {
                 setValue('img', data.data.secure_url)
             });
     }
+
+    const onSubmit: SubmitHandler<IData> = async (data) => {
+        await uploadImg()
+        console.log(data.img)
+        if(data.img){
+            postNewReview(data);
+        }
+    };
 
     return (
         <>

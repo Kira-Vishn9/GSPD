@@ -8,10 +8,9 @@ interface CardMoviesProps {
 const CardMovies = ({cardData}: CardMoviesProps) => {
     return(
         <>
-            <Link to={`/info${cardData._id}`}>
+            <Link to={`/info/${cardData._id}`}>
                 <Card sx={{ width: 318, borderRadius: '25px', m: 2 }}>
                     <CardMedia
-
                         sx={{ height: 380 }}
                         image={cardData.img}
                         title="green iguana"

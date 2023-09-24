@@ -24,14 +24,14 @@ const CardBooks = ({cardData}: CardBooksProps) => {
                                 {cardData.title}
                             </Typography>
                         </CardContent>
-                    <Typography>
+                    <Typography sx={{overflow: 'hidden'}}>
                         {cardData.text}
                     </Typography>
                     <CardActions sx={{ display: 'flex', justifyContent: 'space-between', p: 2}}>
                         <Typography variant="body1">
                             {cardData.author}
                         </Typography>
-                        <BasicRating />
+                        <BasicRating value={cardData.totalRating} />
                     </CardActions>
                 </Box>
             </Box>
