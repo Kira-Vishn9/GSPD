@@ -8,7 +8,6 @@ import SignIn from "@/modules/SignIn/SignIn.tsx";
 import SignUp from "@modules/SignUp/SignUp.tsx";
 import {ColorModeContext} from "@context/ColorModeContext.ts";
 import {authContext} from "@context/AuthContext.ts";
-import Layout from "@/Layout/Layout.tsx";
 import Profile from "@/page/Profile/Profile.tsx";
 import OpenCard from "@/page/OpenCard/OpenCard.tsx";
 import FeedPosts from '@/page/FeedPosts/FeedPosts.tsx'
@@ -16,6 +15,7 @@ import CreatePost from '@/page/CreatePost/CreatePost.tsx'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import {getToken} from "@/service/helper.ts";
 import {Cloudinary} from "@cloudinary/url-gen";
+import { RootLayout} from "@/Layout/RootLayout.tsx";
 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -61,7 +61,9 @@ function App() {
     <GoogleOAuthProvider clientId="<your_client_id>">
         <authContext.Provider value={{ auth, setAuth }}>
             <BrowserRouter>
-                <Layout>
+                <RootLayout>
+                {auth
+                    ? (
                     <Routes>
                         <Route path="*" element={<Main />} />
                         <Route path={'/signin'} element={<SignIn />} />
@@ -74,7 +76,18 @@ function App() {
                         <Route path={'/Movie'} element={<FeedPosts />} />
                         <Route path={'/create'} element={<CreatePost />} />
                     </Routes>
-                </Layout>
+                    ) : (
+                    <Routes>
+                        <Route path="*" element={<Main />} />
+                        <Route path={'/signin'} element={<SignIn />} />
+                        <Route path={'/signup'} element={<SignUp />} />
+                        <Route path={'/info/:postId'} element={<OpenCard />} />
+                        <Route path={'/Home'} element={<FeedPosts />} />
+                        <Route path={'/Game'} element={<FeedPosts />} />
+                        <Route path={'/Book'} element={<FeedPosts />} />
+                        <Route path={'/Movie'} element={<FeedPosts />} />
+                    </Routes>)}
+                    </RootLayout>
             </BrowserRouter>
         </authContext.Provider>
     </GoogleOAuthProvider>

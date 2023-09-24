@@ -140,7 +140,6 @@ export const checkReviewFromUser = async (postId: string | undefined ) => {
     const id = localStorage.getItem('userId')
     try{
         const response = await httpClient.get(`/post/${postId}/rating/check/${id}`);
-        console.log(response)
         return response
     }catch(error: unknown){
         console.error('Like error:', error);

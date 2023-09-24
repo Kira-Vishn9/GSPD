@@ -6,7 +6,7 @@ export const httpClient = Axios.create({
     baseURL: apiEnv.baseUrl,
     withCredentials: true,
     headers: {
-        'Authorization': localStorage.getItem('authToken'),
+        'authorization': localStorage.getItem('authToken'),
         'userid': localStorage.getItem("userId")
     }
 })
